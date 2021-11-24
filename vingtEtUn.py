@@ -1,7 +1,7 @@
 #Program Name: vingtEtUn.py
 #Authors: Jaime Parra Velez, Marjorie Gilles, Corey Duke
 #Date: 11/23/2021
-#Program Description: Game of 21 where the user can choose to hit or stay.
+#Program Description: Game of 21 where the user can choose to hit or stay and wins if they get a higher score than the computer.
 
 #input: import random module, import time module, menu choice, and user input, 
 #Processing:1. Define gameMenu function
@@ -19,13 +19,14 @@
 #                  prompt userOne to hit or stay prompt
 #                  if user input is invalid, display error message and try again
 #                  if user input equals hit 
-#                        return rollDice function
+#                        return True
 #                  elif user input equals stay
-#                        return stay
+#                        return False 
 #           5. Define rollDice function
 #                   randomly generated number is assigned to diceOne
 #                   diceOne is removed from the list
-#                   if receivedTotal is equal to or greater than 14, sendTotal is equal to startTotal + diceOne
+#                   if receivedTotal is equal to or greater than 14
+#                        sendTotal is equal to startTotal + diceOne
 #                        return sendTotal
 #                   else:
 #                        randomly generated number is assigned to dice two
@@ -54,12 +55,13 @@
 #                     At each turn the system will ask the player/house whether to stay or roll.
 #                     While userOne is not stay or user One is not bust and computer is not stay or computer is not bust
 #                           If the house has a running total of 17 or higher, it stays, and the turn passes to the player.
-#                           If the player/house option is to roll, the program simulates the roll of the two dies and updates & #                           displays the player’s running total.
-#                     If the player/house starts the round with an accumulated total of 14 points or more, only one die will be #                     rolled.
+#                           If the player/house option is to roll, the program simulates the roll of the two dies and updates & displays the player’s running total.
+#                     If the player/house starts the round with an accumulated total of 14 points or more, only one die will be rolled.
 #                     Once the game is over the system will display the result
 #                     Winner
 #                     Loser
-#                     Tie
+#                     Tie]
+                        NEEDS WORK
 #           9. Define main function 
 #                     Declare userTotal and computerTotal as 0
 #                     Declare userName as empty string
