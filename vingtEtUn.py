@@ -7,11 +7,16 @@
 #Processing:1. Define gameMenu function
 #                  Display game menu
 #                  Try to get user selection
-#                         If user selection is 1, call gameRules function
-#                         If user selection is 2, call gamePlay function
+#                      If user selection is 1
+#                               Return 1
+#                      If user selection is 2
+#                               Return 2
+#                      If user selection is 3
+#                               Return 3
 #                  If user selection is invalid, display error message and try again
-#           2. Define print_pause function
-#                    
+#           2. Define DisplayPause function
+#                   Display message
+#                   Pause before next message
 #           3. Define getUserName function
 #                  userOne = input user name prompt
 #                  return userOne
@@ -22,7 +27,7 @@
 #                        return True
 #                  elif user input equals stay
 #                        return False 
-#           5. Define rollDice function
+#           5. Define playerTurn function
 #                   randomly generated number is assigned to diceOne
 #                   diceOne is removed from the list
 #                   if receivedTotal is equal to or greater than 14
@@ -33,7 +38,7 @@
 #                        diceTwo is removed from the list
 #                        totalRoll is the sum of diceOne and diceTwo
 #                        sendTotal is equal to receivedTotal + totalRoll
-#                   return sendTotal
+#                        return sendTotal
 #           6. Define ComputerTurn function
 #                   randomly generated number is assigned to diceoOne
 #                   if computerTotal is greater than or equal to 14
@@ -43,14 +48,24 @@
 #                         totalRoll is the sum of dice one and dice two 
 #                         computerTotal is equal to computerTotal + totalRoll
                         NEEDS WORK
-#           7. Define calculateScore function
-#               if userTotal is greater than 21 and 
-#               elif userTotal is equal to 21, display Blackjack message return userTotal
-#               else:
-#                   return userTotal
+#           7. Define determineWinLoss function
+#               if userTotal is greater than 21
+#                  Display userName loses 
+#                  
+#               elif computerTotal is greater than 21
+#                  Display userName wins
+#               elif usertotal is equal to 21 and computerTotal is equal to 21
+#                  Display userName and computerName tie
+#               elif userTotal is equal to 21
+#                  Display userName wins
+#               elif computerTotal is equal to 21
+#                  Display Computer hit 21
+#                  Display user loses
+#               
+
                   
                         NEEDS WORK
-#           8. Define gamePlay function 
+#           8. Define Main function 
 #                     Go into a loop of rounds where player & house will take turns throwing the dice.
 #                     At each turn the system will ask the player/house whether to stay or roll.
 #                     While userOne is not stay or user One is not bust and computer is not stay or computer is not bust
@@ -65,9 +80,38 @@
 #           9. Define main function 
 #                     Declare userTotal and computerTotal as 0
 #                     Declare userName as empty string
-#                     numberSet is assigned to a list equal to two decks of cards 
-#                     Display Welcome message
-#                     Display game menu
+#                     Display game menu 
+#                         Return Choice
+#                     numberSet is assigned to a list equal to 1 decks of cards 
+#                     If choice is 1
+#                          enter gameRules function
+#                     Else if choice is 2
+#                           Deal first two cards to player and computer
+#                                 Cards are removed from the list
+#                           determineWinLoss function
+#                           Display player and computer cards
+#                                 hitOrStay function
+#                                 While user input is not equal to stay
+#                                       playerTurn function with userTotal as parameter
+#                                       computerTurn function with computerTotal as parameter
+#                                       display player and computers New totals
+#                                       hitOrStay function
+#
+#
+#                           
+#                           
+#                     Else if choice is 3
+#                          Exit the game with a message
+#
+
+
+
+
+
+
+
+
+
 #           10. Define gameRules function
 #                     Display game rules
 #           11. Define playAgain function
@@ -82,7 +126,16 @@
 #output:
 
 import random
-import time
+from playAgain  import playAgain
+from DisplayPause import DisplayPause
+from gameRules import gameRules
+from getUserName import getUserName
+from hitOrStay import hitOrStay
+from rollDice import rollDice
+from computerTurn import computerTurn
+from calculateScore import calculateScore
+from gameMenu import gameMenu
+
 
 
 
@@ -122,7 +175,7 @@ import time
 
 
 ###List of numbers to be used in the game equal to two decks of cards###
-numberSet = [1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11]
+numberSet = [,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11]
 
 ###roll dice then remove from list###
 diceRoll = random.choice(numberSet)
