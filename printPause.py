@@ -1,5 +1,5 @@
-#Function to pause bewtween print statements
+#Function to pause bewtween Display statements
 import time
-def printPause(fname):
-    print(fname)
+def DisplayPause(fname):
+    Display(fname)
     time.sleep(.25)
