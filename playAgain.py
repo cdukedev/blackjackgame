@@ -1,6 +1,6 @@
 #determine if user would like to play again
 #ensure that the user enters a valid response
-from printPause import printPause
+from DisplayPause import DisplayPause
 def playAgain():
     while True:
         try:
@@ -8,10 +8,12 @@ def playAgain():
             if response == "y":
                 return True
             elif response == "n":
-                printPause("\nThank you for playing!\n")
+                DisplayPause("\nThank you for playing!\n")
                 exit()
             
         except TypeError:
-            print("Invalid response. Try again.")
-        else:
-                print("Invalid response. Try again.")
+            Display("Invalid response. Try again.")
+        except ValueError:
+            Display("Invalid response. Try again.")
+        except:
+            Display("Invalid response. Try again.")
