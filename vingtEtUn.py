@@ -164,7 +164,7 @@ def diceRoll(dice):
     return rollDice
 #Define main function 
 def main():
-
+    print("Let's Begin Playing Vingt-Et-Un!")
 # Declare Variables
     userTotal = 0
     userName = getUserName()
