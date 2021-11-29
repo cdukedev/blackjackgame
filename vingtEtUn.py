@@ -130,8 +130,21 @@ def computerTurn():
 def gameMenu():
 
 def getUserName():
+    userName = input("What is your name? ")
+    print ("Hello",userName,"!")
 
 def hitOrStay():
+        player1 = input("Do you want to roll dice? Y/N:").upper()
+        while True:
+            try:
+                
+                if player1 == "Y" or player1 == "YES":
+                    return True
+                else:
+                    player1 == "N" or player1 == "NO"
+                    return False
+            except:
+                print("Error. Invalid Entry")
   
 def gameRules():
 
@@ -193,8 +206,10 @@ def main():
         numberSet.remove(computerDice2)
         computerTotal = computerDice1 + computerDice2
         #Display user and computer totals
-        print(userName + "'s total is", userTotal) 
-        print("Computer total:", computerTotal)
+        print("You rolled a " + str(userDice1), "and",str(userDice2))
+        print(userName + "'s total roll score is", userTotal) 
+        print("The Computer rolled a " + str(computerDice1), "and",str(computerDice2))
+        print("The Computer's total roll score is:", computerTotal)
 
 # determineWinLoss function passing userTotal, computerTotal
         determineWinLoses(userTotal, computerTotal)
