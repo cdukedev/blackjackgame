@@ -28,8 +28,6 @@
 #                  elif user input equals stay
 #                        return False 
 #           5. Define playerTurn function
-#                   if userChoice equals false
-#                        break from function
 #                   dice one is equal to diceRoll function
 #                   diceOne is removed from the list
 #                   if receivedTotal is equal to or greater than 14
@@ -122,20 +120,46 @@
 
 import random
 import time
-
-def playerTurn():
+def diceRoll(dice):
+    rollDice = random.choice(dice)
+    return rollDice
+def playerTurn(total, numbers):
+    diceOne = diceRoll(numbers)
+    if total >= 14:
+        total += diceOne
+        return total, diceOne
+    else:
+        diceTwo = diceRoll(numbers)
+        totalRoll = diceOne + diceTwo
+        total += totalRoll
+        return total, diceOne, diceTwo
 
 def computerTurn():
 
 def gameMenu():
-
+    menuChoice = int(input("\nEnter your choice: "))
+    try:
+        while menuChoice != 3:
+            print("\n1) See rules\n2) Play game\n3) Exit")
+            if menuChoice == 1:
+                print("\nThe rules of the game are.\n")
+                return 1
+            elif menuChoice == 2:
+                print("\nProceed to play the game.\n")
+                return 2
+            else:
+                print("\nInvalid choice. you must choose between 1,2 or 3\n")
+    except:
+        print("Error, please enter and integer")
+        
 def getUserName():
 
 def hitOrStay():
   
 def gameRules():
 
-def determineWinLoss(userTotal, computerTotal):
+def determineWinLose(userTotal, computerTotal):
+    print("\nYour total is: " + str(userTotal)+ "and the computer's total is: " + str(computerTotal))
 
 def printPause(fname):
     print(fname)
@@ -197,17 +221,15 @@ def main():
         print("Computer total:", computerTotal)
 
 # determineWinLoss function passing userTotal, computerTotal
-        determineWinLoses(userTotal, computerTotal)
+        determineWinLose(userTotal, computerTotal)
 
 # hitOrStay function
-        hitStay = hitOrStay()
+        userChoice = hitOrStay()
 
 # While user input is not equal to stay
-        while hitStay == True
-
-# playerTurn function with userTotal as parameter
-            userTotal = playerTurn(userTotal)
-
+        while userChoice == True:
+# playerTurn function with userTotal, userChoice and numberSet as parameters
+            userTotal = playerTurn(userTotal, numberSet)
 # computerTurn function with computerTotal as parameter
             computerTotal = computerTurn(computerTotal)
 
@@ -216,12 +238,16 @@ def main():
             printPause("Computer total is: " + str(computerTotal))
 
 # determineWinLoses function passing userTotal, computerTotal
-            determineWinLoses(userTotal, computerTotal)
-            hitStay = hitOrStay()
+            determineWinLose(userTotal, computerTotal)
+            userChoice = hitOrStay()
 #while computer total is less 17
         while computerTotal < 17:
             computerTotal = computerTurn(computerTotal)
-            determineWinLoses(userTotal, computerTotal)
+            determineWinLose(userTotal, computerTotal)
+
+main()
+
+
 
 
 
