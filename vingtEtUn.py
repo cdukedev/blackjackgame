@@ -28,29 +28,27 @@
 #                  elif user input equals stay
 #                        return False 
 #           5. Define playerTurn function
-#                   dice one is equal to diceRoll function
-#                   diceOne is removed from the list
+#                   card one is equal to dealCard function
+#                   cardOne is removed from the list
 #                   if receivedTotal is equal to or greater than 14
-#                        sendTotal is equal to startTotal + diceOne
+#                        sendTotal is equal to startTotal + cardOne
 #                        return sendTotal
 #                   else:
-#                        randomly generated number is assigned to dice two
-#                        diceTwo is removed from the list
-#                        totalRoll is the sum of diceOne and diceTwo
-#                        sendTotal is equal to receivedTotal + totalRoll
+#                        randomly generated number is assigned to card two
+#                        cardTwo is removed from the list
+#                        totalCards is the sum of cardOne and cardTwo
+#                        sendTotal is equal to receivedTotal + totalCards
 #                        return sendTotal
 #           6. Define ComputerTurn function
 #                   if computer total is greater that 17 
 #                           break from function
-#                   randomly generated number is assigned to diceOne
+#                   randomly generated number is assigned to cardOne
 #                   if computerTotal is greater than or equal to 14
-#                          computerTotal is equal to computerTotal + diceOne
+#                          computerTotal is equal to computerTotal + cardOne
 #                   elif computerTotal is less than 14 
-#                         randomly generated number is assigned to dice two
-#                         totalRoll is the sum of dice one and dice two 
-#                         computerTotal is equal to computerTotal + totalRoll
-
-
+#                         randomly generated number is assigned to card two
+#                         totalCards is the sum of card one and card two 
+#                         computerTotal is equal to computerTotal + totalCards
 #           7. Define determineWinLoss function
 #               if userTotal is greater than 21
 #                  Display userName loses 
@@ -87,27 +85,25 @@
 #                     Declare userName as empty string
 #                     Go to game menu function
 #                         Return Choice
-#                     numberSet is assigned to a list equal to 1 decks of cards 
+#                     deckCards is assigned to a list equal to 1 decks of cards 
 #                     If choice is 1
-#                          enter gameRules function
+#                         enter gameRules function
 #                     Else if choice is 2
-#                           determineWinLoss function passing userTotal, computerTotal
-#                                 hitOrStay function
-#                                 While user input is not equal to stay 
-#                                       playerTurn function with userTotal as parameter
-#                                       computerTurn function with computerTotal as parameter
-#                                       display player and computers New totals
-#                                       determineWinLoss function passing userTotal, computerTotal
-#                                       hitOrStay function
-#                                 While computer total is less 17
-#                                       computerTurn function with computerTotal as parameter
-#                                       determineWinLoss function passing userTotal, computerTotal
+#                         determineWinLoss function passing userTotal, computerTotal
+#                              hitOrStay function
+#                              While user input is not equal to stay 
+#                                    playerTurn function with userTotal as parameter
+#                                    computerTurn function with computerTotal as parameter
+#                                    display player and computers New totals
+#                                    determineWinLoss function passing userTotal, computerTotal
+#                                    hitOrStay function
+#                              While computer total is less 17
+#                                    computerTurn function with computerTotal as parameter
+#                                    determineWinLoss function passing userTotal, computerTotal
 #                     Else if choice is 3
-#                          Exit the game with a message
-#
+#                     Exit the game with a message
 #           10. Define gameRules function
 #                     Display game rules
-#
 #           11. Define playAgain function
 #                     try to prompt user to play again
 #                             if user input equals yes
@@ -123,65 +119,50 @@ import time
 import sys
 
 
-def diceRoll(dice):
-    rollDice = random.choice(dice)
-    return rollDice
-
-
-
-
-def playerTurn(total, numbers, name):
-    diceOne = diceRoll(numbers)
+#players turn then returns the total after the turn
+def playerTurn(total, cards, name):
+    cardOne, cards = dealCard(cards)
     if total >= 14:
-        total += diceOne
-        #remove diceOne from list
-        numbers.remove(diceOne)
+        total += cardOne
         printPause("-----------------------------------")
         printPause("")
         print(name + "'s new total is " + str(total))
         print("")
-        return total, numbers
+        return total, cards
     else:
-        diceTwo = diceRoll(numbers)
-        totalRoll = diceOne + diceTwo
-        total += totalRoll
-        #remove diceOne and diceTwo from list
-        numbers.remove(diceOne)
-        numbers.remove(diceTwo)
+        cardTwo, cards = dealCard(cards)
+        totalCards = cardOne + cardTwo
+        total += totalCards
         printPause("-----------------------------------")
         printPause("")
         print(name + "'s new total is " + str(total))
         print("")
-        return total, numbers
+        return total, cards
 
 
 
-
-def computerTurn(total, numbers):
+#Determine if computer goes again then calculate the turn and return the total
+def computerTurn(total, cards):
     if total >= 17:
-        return total, numbers
-    diceOne = diceRoll(numbers)
+        print("Computer's stays with a total of " + str(total) + "\n")
+        return total, cards
+    cardOne, cards = dealCard(cards)
     if total >= 14:
-        total += diceOne
-        #remove diceOne from list
-        numbers.remove(diceOne)
-        return total, numbers
+        total += cardOne
+        return total, cards
     else:
-        diceTwo = diceRoll(numbers)
-        totalRoll = diceOne + diceTwo
-        total += totalRoll
+        cardTwo, cards = dealCard(cards)
+        totalCards = cardOne + cardTwo
+        total += totalCards
         printPause("-----------------------------------")
         printPause("")
         print("The Dealer's new total is " + str(total))
         print("")
-        #remove diceOne and diceTwo from list
-        numbers.remove(diceOne)
-        numbers.remove(diceTwo)
-        return total, numbers
+        return total, cards
 
 
 
-
+#Display Game menu with 3 options and exception handling
 def gameMenu(name):
     print(name + ", please choose one of the following""\n--------------------------------------\n1) See rules\n2) Play game\n3) Exit")
     while True:
@@ -209,7 +190,7 @@ def gameMenu(name):
 
 
 
-
+#Prompt user to input their name
 def getUserName():
     userName = input("What is your name? ")
     print("Hello,", userName + "!")
@@ -217,9 +198,9 @@ def getUserName():
 
 
 
-
+#Determine if the user wants another card or not with exception handling
 def hitOrStay():
-    player1 = input("Do you want to roll dice? Y/N:").upper()
+    player1 = input("Do you want another card? y/n:").upper()
     while True:
         try:   
             if player1 == "Y" or player1 == "YES":
@@ -228,48 +209,51 @@ def hitOrStay():
                 player1 == "N" or player1 == "NO"
                 return False
         except:
-            print("Error. Invalid Entry")
+            pass
+        print("\nInvalid input, try again")
+        
 
 
-
-
+#Goes through the user and computers totals and determines who wins, ties, loses, or if the game is still going
 def determineWinLose(uTotal, cTotal, name, boolean):
     if uTotal > 21 and cTotal > 21:
-        print("\nTie game!")
+        print("\nTie game!\n")
         playAgain()
     if uTotal > 21:    
-        print("\n" + name,"loses!")
+        print("\n" + name,"loses!\n")
         playAgain()
     elif cTotal > 21:
-        print("\n" + name,"wins!")
+        print("\n" + name,"wins!\n")
         playAgain()
     elif uTotal == 21 and cTotal == 21:
-        print("\n" + name,"and the computer tie!")
+        print("\n" + name,"and the computer tie!\n")
         playAgain()
     elif uTotal == 21:
-        print("\n" + "You hit 21!")
-        print("\n" + name,"Wins!")
+        print("\n" + "You hit 21!\n")
+        print("\n" + name,"Wins!\n")
         playAgain()
     elif cTotal == 21:
-        print("\nThe computer hit 21!")
-        print("\n" + name,"loses!")
+        print("\nThe computer hit 21!\n")
+        print("\n" + name,"loses!\n")
         playAgain()
-    elif boolean == False:
+
+# if user stays and computer total is greater than 17
+    elif boolean == False and cTotal > 17:
         if uTotal > cTotal:
-            print("\n" + name,"wins!")
+            print("\n" + name,"wins!\n")
             playAgain()
         elif uTotal < cTotal:
-            print("\n" + name,"loses!")
+            print("\n" + name,"loses!\n")
             playAgain()
         elif uTotal == cTotal:
-            print("\n" + name,"and the computer tie!")
+            print("\n" + name,"and the computer tie!\n")
             playAgain()
     else:
         return
 
 
 
-
+#Determine if the user wants to play again with exception handling
 def playAgain():
     response = 0
     while response != "y" or response != "yes" or response != "n" or response != "no":
@@ -295,21 +279,22 @@ def playAgain():
 
 
 
+#ramdomly choose a card from the deck, remove it from the deck, and return it
+def dealCard(cards):
+    pickCard = random.choice(cards)
+    cards.remove(pickCard)
+    return pickCard, cards
 
-def diceRoll(dice):
-    rollDice = random.choice(dice)
-    return rollDice
 
 
-
-
-def startGame(numbers, name):
-        userDice1 = diceRoll(numbers)
-        userDice2 = diceRoll(numbers)
-        userTotal = userDice1 + userDice2
-        computerDice1 = diceRoll(numbers)
-        computerDice2 = diceRoll(numbers)
-        computerTotal = computerDice1 + computerDice2
+#Deals initial cards to the user and computer and displays user and computer totals then returns the total
+def startGame(cards, name):
+        userCard1, cards = dealCard(cards)
+        userCard2, cards = dealCard(cards)
+        userTotal = userCard1 + userCard2
+        computerCard1, cards = dealCard(cards)
+        computerCard2, cards = dealCard(cards)
+        computerTotal = computerCard1 + computerCard2
         print("--------------------------------------")
         print("Let's play Blackjack!")
         print("--------------------------------------")
@@ -320,18 +305,13 @@ def startGame(numbers, name):
         printPause("")
         print("The Dealers total is:", computerTotal) 
         printPause("")
-        #Remove Dice rolls from numbers list
-        numbers.remove(userDice1)
-        numbers.remove(userDice2)
-        numbers.remove(computerDice1)
-        numbers.remove(computerDice2)   
-        return (userDice1, userDice2, userTotal, computerDice1, computerDice2, computerTotal, numbers)
-#Define main function 
+        return (userTotal, computerTotal, cards)
 
 
 
 
 
+#add a pause to the print function
 def printPause(string):
     print(string)
     time.sleep(.5)
@@ -347,42 +327,35 @@ def main():
     computerTotal = 0
     userChoice = True
 
+    # Start with the user in the game menu
     choice = gameMenu(userName)
     if choice == 3:
         exit()
 
-    # numberSet is assigned to a list equal to 1 decks of cards 
-    numberSet = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11]
+    # deckCards is assigned to a list equal to 1 decks of cards 
+    deckCards = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11]
 
-    userDice1, userDice2, userTotal, computerDice1, computerDice2, computerTotal, numberSet = startGame(numberSet, userName)
+    # Start the game expecting userTotal, computerTotal, and deckCards(with dealt cards removed) returned.
+    userTotal, computerTotal, deckCards = startGame(deckCards, userName)
 
-    # determineWinLoss function passing userTotal, computerTotal
+    # determineWinLoss function passing userTotal, computerTotal, userName, and userChoice
     determineWinLose(userTotal, computerTotal, userName, userChoice) 
 
-    # hitOrStay function
+    # determine if the user wants to hit or stay
     userChoice = hitOrStay()
 
     # While user input is not equal to stay
     while userChoice == True:
-    # playerTurn function with userTotal, userChoice and numberSet as parameters
-        userTotal, numberSet = playerTurn(userTotal, numberSet, userName)
-        numberSet.remove(userDice1)
-        numberSet.remove(userDice2)
+    # playerTurn function with userTotal, userChoice and deckCards as parameters
+        userTotal, deckCards = playerTurn(userTotal, deckCards, userName)
     # computerTurn function with computerTotal as parameter
-        computerTotal, numberSet = computerTurn(computerTotal, numberSet)
-        #remove dice from numberSet
-        numberSet.remove(computerDice1)
-        numberSet.remove(computerDice2)
-    # display player and computers New totals
-        print("Your total is: " + str(userTotal))
-        print("Computer total is: " + str(computerTotal))
-
+        computerTotal, deckCards = computerTurn(computerTotal, deckCards)
     # determineWinLoses function passing userTotal, computerTotal
         determineWinLose(userTotal, computerTotal, userName, userChoice)
         userChoice = hitOrStay()
     #while computer total is less 17
     while computerTotal < 17:
-        computerTotal, numberSet = computerTurn(computerTotal, numberSet)
+        computerTotal, deckCards = computerTurn(computerTotal, deckCards)
         determineWinLose(userTotal, computerTotal, userName, userChoice)
     determineWinLose(userTotal, computerTotal, userName, userChoice)
 
@@ -394,7 +367,7 @@ main()
 ###RULES###
 ###FOR INSTRUCTIONS###
 
-#  The goal of the game is to score 21 points, or as near as possible without going over. The two players take turns throwing two dies as many times as desired and adding up the numbers thrown on each round.
+#  The goal of the game is to score 21 points, or as near as possible without going over. The two players take turns dealing two cards as many times as desired and adding up the cards dealt on each round.
 
 # A player who totals over 21 is bust and loses the game.
 
@@ -406,9 +379,9 @@ main()
 # One or both players are bust.
 # Both players choose to stay.
 
-# Once a player totals 14 or more, one of the dies is discarded for the consecutive turns.
+# Once a player totals 14 or more, one of the cards is discarded for the consecutive turns.
 
-# The house must throw the dice until the total is 17 or higher. At 17 or higher, the house must stay.
+# The house must deal the card until the total is 17 or higher. At 17 or higher, the house must stay.
 
 # Project Requirements
 # The program will start by prompting the user for the name of the player.
