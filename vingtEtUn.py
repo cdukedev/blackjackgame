@@ -42,7 +42,7 @@
 #                        sendTotal is equal to receivedTotal + totalRoll
 #                        return sendTotal
 #           6. Define ComputerTurn function
-#                   if computer total is greater that 17 
+#                   if computer total is greater than 17 
 #                           break from function
 #                   randomly generated number is assigned to diceOne
 #                   if computerTotal is greater than or equal to 14
@@ -126,6 +126,16 @@ import time
 def playerTurn():
 
 def computerTurn():
+    while computerTotal > 17:
+            break
+    computerDice1 = diceRoll(numberSet)
+    if computerTotal >= 14:
+        computerTotal = computerTotal + computerDice1
+    elif computerTotal <= 14:
+        computerDice2 = diceRoll(numberSet)
+        totalRoll = computerDice1 + computerDice2
+        computerTotal = computerTotal + totalRoll
+
 
 def gameMenu():
 
@@ -264,8 +274,26 @@ def main():
        
         
 # determineWinLoss function passing userTotal, computerTotal
-        determineWinLoses(userTotal, computerTotal)
 
+       if userTotal > 21:
+           print("Sorry",userName,"You Lost!")
+           gameMenu()
+        elif computerTotal > 21:
+            print("Great Job!", userName,"You Won!!!")
+            gameMenu()
+        elif userTotal == 21 and computerTotal == 21:
+            print("It's a Tie between,",userName, "and the Computer. There is no Winner.")
+            gameMenu()
+        elif userTotal == 21:
+             print("You Win", username,"!!!")
+             gameMenu()
+        elif computerTotal == 21
+            print("The Computer hits 21!!!")
+            print(username,"Loses.")
+            gameMenu()
+        
+        
+        
 # hitOrStay function
         hitStay = hitOrStay()
 
