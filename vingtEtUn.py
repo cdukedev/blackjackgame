@@ -350,10 +350,10 @@ def main():
         userTotal, deckCards = playerTurn(userTotal, deckCards, userName)
     # computerTurn function with computerTotal as parameter
         computerTotal, deckCards = computerTurn(computerTotal, deckCards)
-    # determineWinLoses function passing userTotal, computerTotal
+    # determineWinLoses function passing userTotal, computerTotal, userName, and userChoice
         determineWinLose(userTotal, computerTotal, userName, userChoice)
         userChoice = hitOrStay()
-    #while computer total is less 17
+    # Continue until the computer has more than 17.
     while computerTotal < 17:
         computerTotal, deckCards = computerTurn(computerTotal, deckCards)
         determineWinLose(userTotal, computerTotal, userName, userChoice)
