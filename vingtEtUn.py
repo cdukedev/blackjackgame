@@ -129,6 +129,32 @@ def computerTurn():
 
 def gameMenu():
 
+def main():
+    userTotal = 0
+    computerTotal = 0
+    userName = getUserName()
+    choice = gameMenu()
+        return choice
+    numberSet = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11]
+    if choice == 1:
+        gameRules()
+    elif choice == 2:
+        determineWinLoses(userTotal, computerTotal)
+        hitStay = hitOrStay()
+        while hitStay == True
+            userTotal = playerTurn(userTotal)
+            computerTotal = computerTurn(computerTotal)
+            printPause("Your total is: " + str(userTotal))
+            printPause("Computer total is: " + str(computerTotal))
+            determineWinLoses(userTotal, computerTotal)
+            hitStay = hitOrStay()
+        while computerTotal < 17:
+            computerTotal = computerTurn(computerTotal)
+            determineWinLoses(userTotal, computerTotal)
+    elif choice == 3:
+        print("Thank you for playing. Goodbye")
+        exit
+
 def getUserName():
     userName = input("What is your name? ")
     print ("Hello",userName,"!")
@@ -177,7 +203,32 @@ def diceRoll(dice):
     return rollDice
 #Define main function 
 def main():
-    print("Let's Begin Playing Vingt-Et-Un!")
+    userTotal = 0
+    computerTotal = 0
+    userName = getUserName()
+    choice = gameMenu()
+        return choice
+    numberSet = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11]
+    if choice == 1:
+        gameRules()
+    elif choice == 2:
+        determineWinLoses(userTotal, computerTotal)
+        hitStay = hitOrStay()
+        while hitStay == True
+            userTotal = playerTurn(userTotal)
+            computerTotal = computerTurn(computerTotal)
+            printPause("Your total is: " + str(userTotal))
+            printPause("Computer total is: " + str(computerTotal))
+            determineWinLoses(userTotal, computerTotal)
+            hitStay = hitOrStay()
+        while computerTotal < 17:
+            computerTotal = computerTurn(computerTotal)
+            determineWinLoses(userTotal, computerTotal)
+    elif choice == 3:
+        print("Thank you for playing. Goodbye")
+        exit
+        
+    
 # Declare Variables
     userTotal = 0
     userName = getUserName()
@@ -210,7 +261,8 @@ def main():
         print(userName + "'s total roll score is", userTotal) 
         print("The Computer rolled a " + str(computerDice1), "and",str(computerDice2))
         print("The Computer's total roll score is:", computerTotal)
-
+       
+        
 # determineWinLoss function passing userTotal, computerTotal
         determineWinLoses(userTotal, computerTotal)
 
