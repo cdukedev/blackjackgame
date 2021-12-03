@@ -159,6 +159,9 @@
 #                     determineWinLoss function passing userTotal, computerTotal, userName, and userChoice
 #output:game rules, userName, userTotal, computerTotal, winLoss message, play again prompt, and exit message
 
+
+
+#Import Modules
 import random
 import time
 import sys
@@ -300,7 +303,6 @@ def determineWinLose(uTotal, cTotal, name, hitPass):
         print("The computer hit 21!\n")
         print(name,"loses!\n")
         playAgain()
-
 # if user stays and computer total is greater than or equal to 17
     elif hitPass == "stay" and cTotal >= 17:
         if uTotal > cTotal:
