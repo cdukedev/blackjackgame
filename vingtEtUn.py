@@ -328,16 +328,16 @@ def gameRules():
                "without going over; the two players take turns.")
     print("\n2. This game uses a deck of cards starting with aces only as 1 and 6's as the highest card.\n")
     print("\n3. There are four of each in the deck so you can use more strategy to know what will come next.\n")
-    print("\n2. A player who totals over 21 is bust and loses the game.")
-    print("\n3. The player whose total is nearest 21, after each player has had a turn, wins the game.")
-    print("\n4. In the case of an equally high total, the game is tied.")
-    print("\n5. The game is over at the end of a round when:")
+    print("\n4. A player who totals over 21 is bust and loses the game.")
+    print("\n5. The player whose total is nearest 21, after each player has had a turn, wins the game.")
+    print("\n6. In the case of an equally high total, the game is tied.")
+    print("\n7. The game is over at the end of a round when:")
     print("     - One or both players are bust.")
     print("     - Both players choose to stay.")
-    print("\n6. Once a player totals 14 or more, the player will only draw 1 card for the consecutive turns.")
-    print("\n7. The house must draw a card until the total is 17 or higher.\n"
+    print("\n8. Once a player totals 14 or more, the player will only draw 1 card for the consecutive turns.")
+    print("\n9. The house must draw a card until the total is 17 or higher.\n"
           "     At 17 or higher, the house must stay.\n")
-    print("\n8. The first player to score 21 wins the game.\n")
+    print("\n10. The first player to score 21 wins the game.\n")
 
 
 
