@@ -3,6 +3,7 @@
 
 
 | Corey Duke, Marjorie Gilles, Jaime Parra Velez | 11/23/2021 | Team Project |
+Readme created by Corey Duke as instruction to the team.
 
 
 ## Table of contents
