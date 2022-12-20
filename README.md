@@ -1,5 +1,5 @@
-# blackjackgame
-# COP1000C - Black Jack Game
+
+# Black Jack Game
 
 
 | Corey Duke, Marjorie Gilles, Jaime Parra Velez | 11/23/2021 | Team Project |
